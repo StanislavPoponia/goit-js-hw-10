@@ -1,46 +1,22 @@
 
 
-.breed-select {
-  padding: 5px;
-  font-size: 16px;
-  border: none;
-  outline: none;
-  border-bottom: 2px solid black;
-  margin-bottom: 50px;
-}
 
-.breed-select:hover {
-  border-bottom: 2px solid #3890ab;
-}
-
-.cat-info {
-  display: flex;
-}
-
-.cat-info img {
-  margin-right: 50px;
-}
-
-
-loader {
-    position: relative;
-    width: 100px;
-    height: 100px;
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #FF3D00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
   }
-  
-  .loader:before , .loader:after{
-    content: '';
-    border-radius: 50%;
-    position: absolute;
-    inset: 0;
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
   }
-  .loader:after {
-    box-shadow: 0 2px 0 #FF3D00 inset;
-    animation: rotate 2s linear infinite;
+  100% {
+      transform: rotate(360deg);
   }
-  
-  @keyframes rotate {
-    0% {  transform: rotate(0)}
-    100% { transform: rotate(360deg)}
-  }
+  } 
