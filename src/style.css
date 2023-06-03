@@ -1,5 +1,26 @@
 
 
+.breed-select {
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid black;
+  margin-bottom: 50px;
+}
+
+.breed-select:hover {
+  border-bottom: 2px solid #3890ab;
+}
+
+.cat-info {
+  display: flex;
+}
+
+.cat-info img {
+  margin-right: 50px;
+}
+
 
 loader {
     position: relative;

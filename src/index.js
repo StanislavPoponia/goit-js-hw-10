@@ -1,5 +1,5 @@
-import SlimSelect from 'slim-select'
 
+import SlimSelect from 'slim-select'
 new SlimSelect({
   select: '#selectElement'
 })
@@ -9,7 +9,7 @@ import { fetchBreeds, fetchCatByBreed } from './cat_api.js';
 const refs = {
   boxCat: document.querySelector('.cat-info'),
   select: document.querySelector('.breed-select'),
-  loader: document.querySelector('.loader-span'),
+  loader: document.querySelector('.loader'),
 };
 
 refs.select.addEventListener('input', selectCat);
@@ -29,11 +29,6 @@ fetchBreeds()
   });
 
 function selectCat(e) {
-  refs.boxCat.innerHTML = '';
-  const loader = '<span class="loader"></span>';
-
-  refs.boxCat.insertAdjacentHTML('beforeend', loader);
-
   const catId = e.target.value;
 
   fetchCatByBreed(catId)
