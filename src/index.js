@@ -26,30 +26,30 @@ fetchBreeds()
     Notiflix.Notify.failure(`Error API, ${error}`);
   });
 
-  function selectCat(e) {
+  function selectCat(event) {
     refs.catInfo.innerHTML = '';
     const loader = '<span class="loader"></span>';
   
     refs.catInfo.insertAdjacentHTML('beforeend', loader);
   
-    const catId = e.target.value;
+    const catId = event.target.value;
   
     fetchCatByBreed(catId)
       .then(cat => {
         refs.catInfo.innerHTML = '';
   
-        const kitty = cat[0].breeds[0];
+        const cats = cat[0].breeds[0];
         const markupCat = `
                 <img width="400" src="${cat[0].url}" alt="cat" />
                 <div class="description-cat">
-                  <h1>${kitty.name}</h1>
-                  <p>${kitty.description}</p>
-                  <p><h2>Temperament:</h2>${kitty.temperament}</p>
+                  <h1>${cats.name}</h1>
+                  <p>${cats.description}</p>
+                  <p><h2>Temperament:</h2>${cats.temperament}</p>
                 </div>`;
   
         refs.catInfo.insertAdjacentHTML('beforeend', markupCat);
       })
       .catch(error => {
-        Notiflix.Notify.failure(`Error fetch API, ${error}`);
+        Notiflix.Notify.failure(`Error API, ${error}`);
       });
   }

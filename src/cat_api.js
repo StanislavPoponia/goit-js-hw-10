@@ -5,7 +5,7 @@ const catApiUrl = 'https://api.thecatapi.com/v1/breeds';
 const catApiImageUrl = 'https://api.thecatapi.com/v1/images';
 
 function fetchBreeds() {
-    return fetch(`${catApiUrl}/?api_key=${API_KEY}`).then(r => r.json());
+    return fetch(`${catApiUrl}/?api_key=${API_KEY}`).then(res => res.json());
   }
   
   function fetchCatByBreed(catId) {
