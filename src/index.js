@@ -1,11 +1,8 @@
 
-import SlimSelect from 'slim-select'
+
 import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from './cat_api.js';
 
-new SlimSelect({
-  select: '#selectElement',
-});
 
 const refs = {
   catInfo: document.querySelector('.cat-info'),
