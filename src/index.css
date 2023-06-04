@@ -20,7 +20,7 @@
     border-radius: 50%;
     position: relative;
     transform:rotate(45deg);
-    background: #fff;
+    background: black;
   }
   .loader::before {
     content: "";
