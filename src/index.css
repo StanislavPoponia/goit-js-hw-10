@@ -15,6 +15,7 @@
 
 
 .loader {
+  display: block;
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -38,4 +39,9 @@
       50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
       75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
       100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+  }
+
+
+  .invisible{
+    display: none;
   }

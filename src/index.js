@@ -8,6 +8,7 @@ const refs = {
   catInfo: document.querySelector('.cat-info'),
   select: document.querySelector('.breed-select'),
   loader: document.querySelector('.loader'),
+  container : document.querySelector('.container'),
 };
 
 refs.select.addEventListener('input', selectCat);
@@ -17,10 +18,11 @@ fetchBreeds()
     const markupOptions = i
       .map(cat => {
         return `<option value="${cat.id}">${cat.name}</option>\n`;
-      })
-      .join('');
-
-    refs.select.insertAdjacentHTML('beforeend', markupOptions);
+       })
+       .join('');
+       refs.select.insertAdjacentHTML('beforeend', markupOptions);
+   
+    
   })
   .catch(error => {
     Notiflix.Notify.failure(`Error API, ${error}`);
@@ -28,9 +30,10 @@ fetchBreeds()
 
   function selectCat(event) {
     refs.catInfo.innerHTML = '';
-    const loader = '<span class="loader"></span>';
   
-    refs.catInfo.insertAdjacentHTML('beforeend', loader);
+   
+    refs.loader.classList.toggle('invisible')
+    refs.container.classList.toggle('invisible')
   
     const catId = event.target.value;
   
@@ -51,5 +54,11 @@ fetchBreeds()
       })
       .catch(error => {
         Notiflix.Notify.failure(`Error API, ${error}`);
-      });
+      })
+      .finally(() =>{ setTimeout(() => {refs.loader.classList.toggle('invisible')
+      refs.container.classList.toggle('invisible')
+      }, 1000);
+        
+      })
+      ;
   }
