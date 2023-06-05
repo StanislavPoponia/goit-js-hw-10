@@ -15,13 +15,12 @@
 
 
 .loader {
-  display: block;
     width: 48px;
     height: 48px;
     border-radius: 50%;
     position: relative;
     transform:rotate(45deg);
-    background: black;
+    background: #fff;
   }
   .loader::before {
     content: "";

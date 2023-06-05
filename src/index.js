@@ -1,5 +1,3 @@
-
-
 import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from './cat_api.js';
 
@@ -14,28 +12,31 @@ const refs = {
 refs.select.addEventListener('input', selectCat);
 
 fetchBreeds()
-  .then(i => {
-    const markupOptions = i
-      .map(cat => {
-        return `<option value="${cat.id}">${cat.name}</option>\n`;
-       })
-       .join('');
-       refs.select.insertAdjacentHTML('beforeend', markupOptions);
-   
-    
-  })
-  .catch(error => {
-    Notiflix.Notify.failure(`Error API, ${error}`);
-  });
-
-  function selectCat(event) {
-    refs.catInfo.innerHTML = '';
-  
-   
+  .then(i => { 
     refs.loader.classList.toggle('invisible')
     refs.container.classList.toggle('invisible')
   
-    const catId = event.target.value;
+    const markupOptions = i
+      .map(cat => {
+        return `<option value="${cat.id}">${cat.name}</option>`;
+       })
+       .join('');
+       refs.select.insertAdjacentHTML('beforeend', markupOptions);
+      })
+       .catch(error => {
+        Notiflix.Notify.failure(`Error API, ${error}`);
+      })
+      .finally(() => { setTimeout(() => {
+        refs.loader.classList.toggle('invisible')
+        refs.container.classList.toggle('invisible')
+        }, 500);});
+
+ 
+  function selectCat(event) {
+    refs.loader.classList.toggle('invisible')
+    refs.container.classList.toggle('invisible')
+   
+   const catId = event.target.value;
   
     fetchCatByBreed(catId)
       .then(cat => {
@@ -49,16 +50,15 @@ fetchBreeds()
                   <p>${cats.description}</p>
                   <p><h2>Temperament:</h2>${cats.temperament}</p>
                 </div>`;
-  
-        refs.catInfo.insertAdjacentHTML('beforeend', markupCat);
+          refs.catInfo.insertAdjacentHTML('beforeend', markupCat);
       })
       .catch(error => {
         Notiflix.Notify.failure(`Error API, ${error}`);
       })
-      .finally(() =>{ setTimeout(() => {refs.loader.classList.toggle('invisible')
-      refs.container.classList.toggle('invisible')
-      }, 1000);
-        
-      })
+      .finally(() => { setTimeout(() => {
+        refs.loader.classList.toggle('invisible')
+        refs.container.classList.toggle('invisible')
+         }, 500);
+        })
       ;
-  }
+     }
